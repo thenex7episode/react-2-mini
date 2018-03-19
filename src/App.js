@@ -18,6 +18,8 @@ class App extends Component {
       fontFamily: 'monospace'
     }
     this.updateColor = this.updateColor.bind(this)
+    this.updateSize = this.updateSize.bind(this)
+    this.updateFamily = this.updateFamily.bind(this)
   }
 
   updateColor(val){
@@ -31,10 +33,20 @@ class App extends Component {
   
 
    updateSize (val) {
-
+      this.setState (() => {
+        return {
+          fontSize: val
+        }
+      })
    }
 
-  // updateFamily
+  updateFamily(val) {
+    this.setState (() => {
+      return {
+        fontFamily: val
+      }
+    })
+  }
 
   // updateEditStatus
 
@@ -44,8 +56,8 @@ class App extends Component {
         <div className="headerBar">
           { /* Render EditToggle */ }
           <ColorChanger fontColor={this.state.fontColor} update={this.updateColor}/>
-          { /* Render SizeChanger */ }
-          { /* Render FamilyChanger */ }
+          <SizeChanger fontSize={this.state.fontSize} update={this.updateSize}/>
+          <FamilyChanger fontFamily = {this.state.fontFamily} update={this.updateFamily}/>
         </div>
         <div className="textArea">
           <TextContainer 
